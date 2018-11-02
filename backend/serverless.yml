@@ -15,16 +15,19 @@ provider:
         - s3:*
         - dynamodb:*
         - sqs:*
+      Resource:
+        - '*'
 
   tags:
-    Application: 'Pew Pew Pew! Serverless Array'
+    Application: 'Pew Pew Pew Serverless Array'
     Environment: ${self:provider.stage}
 
 custom:
   appname: pewpewpew-array
   appshortname: pppa-${self:provider.stage}
 
-#package:
+package:
+  individually: true
 #  include:
 #    - include-me.py
 #    - include-me-dir/**
@@ -33,8 +36,13 @@ custom:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  ping:
+    handler: functions/ping.handler
+    events:
+      - http:
+          path: ping
+          method: GET
+          cors: true
 
 #resources:
 #  Resources:
