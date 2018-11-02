@@ -1,6 +1,8 @@
 {
-  "name": "webclient",
+  "name": "pewpewpew-array-webclient",
+  "description": "Webclient portal for the Pew Pew Pew! Serverless Array.",
   "version": "0.1.0",
+  "author": "Richard Neil Ilagan <ilagan@amazon.com>",
   "private": true,
   "dependencies": {
     "react": "^16.6.0",
@@ -11,15 +13,21 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "eject": "react-scripts eject",
+    "lint": "eslint '**/*.{js,jsx}' -f stylish",
+    "lint:autofix": "eslint '**/*.{js,jsx}' -f stylish --fix"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "ajv": "6.5.4",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0"
+  }
 }

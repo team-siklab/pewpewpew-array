@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "standard",
+    "react-app"
+  ],
+  "rules": {
+    "react/prop-types": 0
+  }
+}
+
