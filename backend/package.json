@@ -1,0 +1,14 @@
+{
+  "name": "pewpewpew-array-backend",
+  "description": "Backend stack for the Pew Pew Pew! Serverless Array.",
+  "version": "0.1.0",
+  "contributors": [
+    "Richard Neil Ilagan <ilagan@amazon.com>",
+    "Romulo Gapuz Jr. <romgapuz@amazon.com>"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-python-requirements": "^4.2.5"
+  },
+  "private": true
+}
