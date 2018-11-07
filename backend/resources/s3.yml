@@ -1,0 +1,13 @@
+---
+Resources:
+  DeploymentBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${self:custom.appshortname}-${self:provider.stage}-pewpewpew
+      AccessControl: PublicRead
+
+Outputs:
+  DeploymentBucketName:
+    Description: The name of the stackset deployment bucket.
+    Value:
+      Ref: DeploymentBucket
