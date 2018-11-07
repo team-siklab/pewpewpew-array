@@ -1,0 +1,77 @@
+---
+Resources:
+  TestsTable:
+    Type: AWS::DynamoDB::Table
+    Description: Catalog of tests
+    Properties:
+      TableName: ${self:custom.appshortname}-tests-table
+      AttributeDefinitions:
+        - AttributeName: TestId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PlayerId
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2
+
+  RunsTable:
+    Type: AWS::DynamoDB::Table
+    Description: Catalog of test runs
+    Properties:
+      TableName: ${self:custom.appshortname}-testruns-table
+      AttributeDefinitions:
+        - AttributeName: TestRunId
+          AttributeType: S
+        - AttributeName: Timestamp
+          AttributeType: S
+        - AttributeName: TestId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: TestRunId
+          KeyType: HASH
+        - AttributeName: Timestamp
+          KeyType: RANGE
+
+      LocalSecondaryIndexes:
+        - IndexName: SortedByGameId
+          KeySchema:
+            - AttributeName: TestRunId
+              KeyType: HASH
+            - AttributeName: TestId
+              KeyType: RANGE
+          Projection:
+            ProjectionType: KEYS_ONLY
+
+      ProvisionedThroughput:
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2
+
+  ResultsTable:
+    Type: AWS::DynamoDB::Table
+    Description: Results storage
+    Properties:
+      TableName: ${self:custom.appshortname}-results-table
+      AttributeDefinitions:
+        - AttributeName: ResultsId
+          AttributeType: S
+        - AttributeName: TestRunId
+          AttributeType: S
+        - AttributeName: StartTimestamp
+          AttributeType: S
+        - AttributeName: EndTimestamp
+          AttributeType: S
+        - AttributeName: Region
+          AttributeType: S
+        - AttributeName: StatusCode
+          AttributeType: S
+      KeySchema:
+        - AttributeName: ResultsId
+          KeyType: HASH
+        - AttributeName: TestRunId
+          KeyType: RANGE
+
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
