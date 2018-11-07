@@ -8,9 +8,12 @@
   ],
   "private": true,
   "dependencies": {
+    "aws-sdk": "2.350.0",
+    "d3": "5.7.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "whatwg-fetch": "3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
