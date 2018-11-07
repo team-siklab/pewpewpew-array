@@ -8,9 +8,12 @@
   ],
   "private": true,
   "dependencies": {
+    "apollo-boost": "0.1.20",
     "aws-sdk": "2.350.0",
     "d3": "5.7.0",
+    "graphql": "14.0.2",
     "react": "^16.6.0",
+    "react-apollo": "2.2.4",
     "react-dom": "^16.6.0",
     "react-scripts": "2.1.1",
     "whatwg-fetch": "3.0.0"
