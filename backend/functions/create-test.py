@@ -10,11 +10,11 @@ def handler(event, context):
     data = json.loads(event['body'])
 
     # :: failsafes ---
-    if 'testid' not in data:
-        logging.error('No testid provided.')
-        raise Exception('No testid provided.')
+    if 'TestId' not in data:
+        logging.error('No TestId provided.')
+        raise Exception('No TestId provided.')
 
-    if 'targeturl' not in data:
+    if data['targeturl'] == '':
         logging.error('No target URL provided.')
         raise Exception('No target URL provided.')
 
@@ -23,11 +23,15 @@ def handler(event, context):
     # :: ---
 
     table = dynamodb.Table(os.environ['DDB_TESTS'])
-    table.put_item(data)
+    table.put_item(Item=data)
 
     response = {
         'statusCode': 200,
-        'body': json.dumps(data)
+        'body': json.dumps(data),
+        'headers': {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': True
+        }
     }
 
     return response

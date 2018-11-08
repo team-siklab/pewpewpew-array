@@ -9,6 +9,16 @@ provider:
   environment:
     TARGET_REGION: ${self:provider.region}
 
+    DDB_TESTS:
+      Ref: TestsTable
+    DDB_TESTRUNS:
+      Ref: RunsTable
+    DDB_RESULTS:
+      Ref: ResultsTable
+  
+    S3_DEPLOYMENT_BUCKET:
+      Ref: DeploymentBucket
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -25,16 +35,6 @@ provider:
 custom:
   appname: pewpewpew-array
   appshortname: pppa-${self:provider.stage}
-
-  DDB_TESTS:
-    Ref: TestsTable
-  DDB_TESTRUNS:
-    Ref: RunsTable
-  DDB_RESULTS:
-    Ref: ResultsTable
-
-  S3_DEPLOYMENT_BUCKET:
-    Ref: DeploymentBucket
 
 package:
   individually: true

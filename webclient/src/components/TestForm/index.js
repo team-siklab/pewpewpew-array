@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { v4 as uuid } from 'uuid'
 
+import { API_URL } from '../../config'
+
 import './TestForm.css'
 
 export class TestForm extends Component {
@@ -8,7 +10,7 @@ export class TestForm extends Component {
     super(props)
 
     this.state = {
-      testid: uuid(),
+      TestId: uuid(),
       targeturl: '',
       rate: 10,
       duration: 60,
@@ -46,6 +48,15 @@ export class TestForm extends Component {
 
   commitCreateTest () {
     console.log(this.state)
+    console.log(API_URL)
+
+    fetch(`${API_URL}/tests/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    })
   }
 
   render () {
@@ -53,7 +64,7 @@ export class TestForm extends Component {
       <form className="TestForm">
         <h2>
           Create a Test
-          <span className="testid">{this.state.testid}</span>
+          <span className="testid">{this.state.TestId}</span>
         </h2>
 
         <label className="inputcard">
