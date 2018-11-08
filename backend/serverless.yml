@@ -48,6 +48,14 @@ functions:
           method: GET
           cors: true
 
+  createtest:
+    handler: functions/create-test.handler
+    events:
+      - http:
+          path: tests/create
+          method: POST
+          cors: true
+
 resources:
   - ${file(resources/ddb.yml)}
   - ${file(resources/s3.yml)}
