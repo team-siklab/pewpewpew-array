@@ -26,14 +26,18 @@ custom:
   appname: pewpewpew-array
   appshortname: pppa-${self:provider.stage}
 
+  DDB_TESTS:
+    Ref: TestsTable
+  DDB_TESTRUNS:
+    Ref: RunsTable
+  DDB_RESULTS:
+    Ref: ResultsTable
+
+  S3_DEPLOYMENT_BUCKET:
+    Ref: DeploymentBucket
+
 package:
   individually: true
-#  include:
-#    - include-me.py
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.py
-#    - exclude-me-dir/**
 
 functions:
   ping:
@@ -44,16 +48,9 @@ functions:
           method: GET
           cors: true
 
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+resources:
+  - ${file(resources/ddb.yml)}
+  - ${file(resources/s3.yml)}
 
 plugins:
   - serverless-python-requirements
