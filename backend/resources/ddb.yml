@@ -9,7 +9,7 @@ Resources:
         - AttributeName: TestId
           AttributeType: S
       KeySchema:
-        - AttributeName: PlayerId
+        - AttributeName: TestId
           KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: 2
@@ -57,14 +57,14 @@ Resources:
           AttributeType: S
         - AttributeName: TestRunId
           AttributeType: S
-        - AttributeName: StartTimestamp
-          AttributeType: S
-        - AttributeName: EndTimestamp
-          AttributeType: S
-        - AttributeName: Region
-          AttributeType: S
-        - AttributeName: StatusCode
-          AttributeType: S
+        # - AttributeName: StartTimestamp
+        #   AttributeType: S
+        # - AttributeName: EndTimestamp
+        #   AttributeType: S
+        # - AttributeName: Region
+        #   AttributeType: S
+        # - AttributeName: StatusCode
+        #   AttributeType: S
       KeySchema:
         - AttributeName: ResultsId
           KeyType: HASH

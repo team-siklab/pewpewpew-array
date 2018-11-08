@@ -1,0 +1,22 @@
+.PageHeader {
+  /* background: rgba(0,0,0,0.1); */
+}
+
+.PageHeader > nav > ul {
+  display: flex;
+  justify-content: center;
+}
+
+.PageHeader > nav > ul > li {
+  list-style: none;
+  flex-grow: 0;
+}
+
+.PageHeader > nav > ul > li > a {
+  padding: 16px;
+  transition: all 0.1s linear;
+}
+
+.PageHeader > nav > ul > li > a:hover {
+  background: rgba(50, 100, 255, 0.3);
+}
