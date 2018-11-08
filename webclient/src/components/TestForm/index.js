@@ -33,6 +33,7 @@ export class TestForm extends Component {
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.commitCreateTest = this.commitCreateTest.bind(this)
   }
 
   handleInputChange (event) {
@@ -41,6 +42,10 @@ export class TestForm extends Component {
     const name = target.name
 
     this.setState({ [name]: value })
+  }
+
+  commitCreateTest () {
+    console.log(this.state)
   }
 
   render () {
@@ -232,6 +237,11 @@ export class TestForm extends Component {
         </label>
 
         <label className="inputcard">
+          <button
+            type="button"
+            onClick={this.commitCreateTest}>
+            Lundagin mo Beybeh!
+          </button>
         </label>
       </form>
     )
