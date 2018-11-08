@@ -1,0 +1,45 @@
+.TestForm {
+  max-width: 600px;
+}
+
+.testid {
+  display: block;
+  font-size: 0.74em;
+  font-weight: normal;
+  font-style: italic;
+  color: rgba(0,0,0,.7);
+}
+
+.inputcard {
+  border: 1px solid rgba(0,0,0,.1);
+  padding: 16px;
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.inputcard > span {
+  text-align: left;
+  flex-grow: 1;
+  padding: 4px;
+}
+
+.inputcard > input {
+  padding: 4px;
+  width: 80%;
+}
+
+.inputcard ul {
+  width: 80%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inputcard ul li {
+  width: 33%;
+  text-align: left;
+  font-size: .7em;
+}
