@@ -9,6 +9,16 @@ provider:
   environment:
     TARGET_REGION: ${self:provider.region}
 
+    DDB_TESTS:
+      Ref: TestsTable
+    DDB_TESTRUNS:
+      Ref: RunsTable
+    DDB_RESULTS:
+      Ref: ResultsTable
+  
+    S3_DEPLOYMENT_BUCKET:
+      Ref: DeploymentBucket
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -26,16 +36,6 @@ custom:
   appname: pewpewpew-array
   appshortname: pppa-${self:provider.stage}
 
-  DDB_TESTS:
-    Ref: TestsTable
-  DDB_TESTRUNS:
-    Ref: RunsTable
-  DDB_RESULTS:
-    Ref: ResultsTable
-
-  S3_DEPLOYMENT_BUCKET:
-    Ref: DeploymentBucket
-
 package:
   individually: true
 
@@ -46,6 +46,14 @@ functions:
       - http:
           path: ping
           method: GET
+          cors: true
+
+  createtest:
+    handler: functions/create-test.handler
+    events:
+      - http:
+          path: tests/create
+          method: POST
           cors: true
 
 resources:
